@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HYVL x The Desire Company | Expert Content Proposal</title>
+<style>
+@font-face{font-family:"Druk";font-weight:500;font-style:normal;font-display:swap;src:url(druk-medium.woff2) format("woff2")}
+@font-face{font-family:"Druk";font-weight:500;font-style:italic;font-display:swap;src:url(druk-medium-italic.woff2) format("woff2")}
+@font-face{font-family:"Nunito";font-weight:400;font-display:swap;src:url(nunito-400.woff2) format("woff2")}
+@font-face{font-family:"Nunito";font-weight:600;font-display:swap;src:url(nunito-600.woff2) format("woff2")}
+:root{--black:#000;--gold:#A48450;--cream:#EDE7DB;--dg:#404752;--mg:#A5A6A5;--lg:#EAEBEC;--nb:#1A1A1A;--white:#fff;
+--disp:"Druk",Impact,sans-serif;--body:"Nunito",Arial,sans-serif;--padl:clamp(24px,6vw,96px);--padr:clamp(24px,9vw,150px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y proximity}
+body{font-family:var(--body);background:var(--cream);color:var(--black);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+
+/* ---------- chrome ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:4px;display:flex;gap:4px;z-index:60;padding:0 4px}
+.progress .seg{flex:1;background:rgba(165,166,165,.45);height:3px;margin-top:4px;transition:background .3s}
+.progress .seg.done{background:var(--gold)}
+.badge{position:fixed;top:18px;left:var(--padl);z-index:55;display:flex;align-items:center;gap:10px;opacity:0;transition:opacity .3s;pointer-events:none}
+.badge.show{opacity:1}
+.badge .hy{font-family:var(--disp);font-size:20px;letter-spacing:.14em;line-height:1;color:var(--gold)}
+.badge .x{font-size:12px;color:var(--mg)}
+.badge img{height:13px;width:auto}
+.badge .lw{display:none}
+body.dark .badge .lw{display:block}body.dark .badge .lb{display:none}
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.rail .ic{width:22px;margin:0 0 26px;opacity:.8}
+.rail a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--mg);font-size:12px;letter-spacing:.06em;padding:5px 0}
+.rail a .nm{opacity:0;transform:translateX(6px);transition:.2s;white-space:nowrap;color:var(--dg);font-size:12px}
+body.dark .rail a .nm{color:var(--mg)}
+.rail:hover a .nm{opacity:1;transform:none}
+.rail a .ln{width:12px;height:1px;background:var(--mg);transition:.25s}
+.rail a.on{color:var(--black);font-weight:600}
+body.dark .rail a.on{color:var(--white)}
+.rail a.on .ln{width:26px;background:var(--gold);height:2px}
+.ctrl{position:fixed;right:22px;bottom:18px;z-index:55;display:flex;align-items:center;gap:14px;font-size:13px;color:var(--dg)}
+body.dark .ctrl{color:var(--mg)}
+.ctrl .ch b{color:var(--gold);font-weight:600;margin-right:6px}
+.ctrl .ct{font-weight:600;letter-spacing:.04em;margin-left:8px}
+.ctrl button{all:unset;cursor:pointer;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.ctrl button svg{width:14px;height:14px;stroke:var(--black);fill:none;stroke-width:2}
+body.dark .ctrl button svg{stroke:var(--white)}
+.ctrl button:disabled{opacity:.35;cursor:default}
+@media(max-width:860px){.rail{display:none}.ctrl .ch{display:none}}
+
+/* ---------- beats ---------- */
+.beat{min-height:100vh;padding:92px var(--padr) 92px var(--padl);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;scroll-snap-align:start}
+.beat.stage{background:var(--black);color:var(--white)}
+.wrap{max-width:1240px;width:100%;position:relative;z-index:2}
+.eyebrow{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--dg);margin-bottom:12px;display:block}
+.stage .eyebrow{color:var(--gold)}
+h1,h2,h3,.d{font-family:var(--disp);font-weight:500;text-transform:uppercase;letter-spacing:.04em;line-height:.96}
+h2{font-size:clamp(40px,4.4vw,68px);max-width:30ch}
+h2.wide{max-width:34ch}
+.rl{width:96px;height:2px;background:var(--gold);margin:26px 0 30px;border:0}
+.lede{font-size:clamp(18px,1.55vw,23px);line-height:1.5;max-width:880px;margin-bottom:34px}
+.stage .lede{color:#e9e9e9}
+.note{font-size:13px;color:var(--dg);margin-top:20px;max-width:760px;line-height:1.5}
+.stage .note{color:var(--mg)}
+/* arcs */
+.arcs{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:62vh;height:110vh;z-index:1;pointer-events:none;opacity:.9}
+.arcs.l{right:auto;left:-30vh}
+/* cards */
+.cards{display:grid;gap:14px}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.c3,.c4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.c2,.c3,.c4{grid-template-columns:1fr}}
+.cd{background:var(--black);color:var(--white);border-radius:6px;padding:22px 24px 26px}
+.stage .cd{background:#111;border:1px solid #2a2a2a}
+.cd .ey{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--gold);display:block;margin-bottom:8px}
+.cd h3{font-style:italic;font-size:clamp(24px,2.1vw,32px);line-height:1;letter-spacing:.01em;margin-bottom:0}
+.cd .cr{width:30px;height:2px;background:var(--gold);margin:14px 0 14px}
+.cd p{font-size:15.5px;line-height:1.5;color:#e6e6e6}
+.cd ul{list-style:none}
+.cd li{font-size:15.5px;line-height:1.45;color:#e6e6e6;padding:4px 0 4px 16px;position:relative}
+.cd li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.stats.s3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.stats,.stats.s3{grid-template-columns:repeat(2,1fr)}}
+.st{border-top:1px solid rgba(165,166,165,.4);padding-top:18px}
+.st .n{font-family:var(--disp);font-size:clamp(56px,6.4vw,104px);line-height:.95;letter-spacing:.01em}
+.st .n.g{color:var(--gold)}
+.st b{display:block;font-weight:600;font-size:18px;margin:12px 0 4px}
+.st p{font-size:14px;color:var(--dg);line-height:1.45}
+.stage .st p{color:var(--mg)}
+.callouts{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px}
+.callouts p{border-left:2px solid var(--gold);padding-left:18px;font-size:16px;line-height:1.5}
+.callouts b{font-weight:600}
+.stage .callouts p{color:#e6e6e6}
+@media(max-width:800px){.callouts{grid-template-columns:1fr}}
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.photos{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.photos figure{background:#fff;border-radius:6px;overflow:hidden}
+.photos figure:nth-child(2){transform:translateY(28px)}
+.photos img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.photos figcaption,.cap{grid-column:1/-1;text-align:center;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--mg);margin-top:38px}
+/* open */
+.open h1{font-size:clamp(48px,5.4vw,92px);max-width:none}
+.open h1 em{font-style:italic;color:var(--gold)}
+.cob{display:flex;align-items:center;gap:22px;margin-bottom:34px}
+.cob .hy{font-family:var(--disp);font-size:clamp(40px,4vw,60px);letter-spacing:.14em;line-height:1;color:var(--gold)}
+.cob .x{color:var(--mg);font-size:24px}
+.cob img{height:clamp(22px,2vw,30px);width:auto}
+.open .sub{font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:#eee;max-width:720px}
+.open .meta{font-size:18px;color:var(--mg);margin-top:16px}
+.open .hint{font-size:13px;color:var(--mg);margin-top:18px}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:30px;max-width:1240px}
+.strip figure{aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#fff;position:relative}
+.strip img{width:100%;height:100%;object-fit:cover}
+.play:after{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(0,0,0,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 7l9 5-9 5z'/%3E%3C/svg%3E") center/24px no-repeat}
+.strip .tag{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;font-weight:600}
+@media(max-width:800px){.strip{grid-template-columns:repeat(3,1fr)}}
+/* by product */
+.bp .cd{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}
+.bp .cd img{background:#fff;border-radius:4px;width:120px;height:150px;object-fit:contain}
+@media(max-width:640px){.bp .cd{grid-template-columns:1fr}}
+/* audit bars */
+.audit{display:grid;grid-template-columns:1.55fr 1fr;gap:44px;align-items:start}
+@media(max-width:1000px){.audit{grid-template-columns:1fr}}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.pills button{all:unset;cursor:pointer;border:1px solid var(--black);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.pills button.on{background:var(--black);color:var(--white)}
+.bars .row{display:grid;grid-template-columns:170px 1fr 70px;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(64,71,82,.15)}
+.bars .nm{font-size:16px}
+.bars .tr{height:22px;background:rgba(64,71,82,.08);position:relative}
+.bars .fl{position:absolute;left:0;top:0;bottom:0;background:#5d5b57;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bars.proj .fl{background:var(--gold)}
+.bars .v{font-family:var(--disp);font-size:34px;text-align:right}
+.side{border-left:1px solid var(--gold);padding-left:22px}
+.side .ey{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--dg);display:block;margin-bottom:8px}
+.side p{font-size:16px;line-height:1.5;margin-bottom:16px}
+.side dl{font-size:13px;color:var(--dg);line-height:1.45}
+.side dt{font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--gold);margin-top:10px}
+/* timeline / opportunities */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:6px}
+.tl.t3{grid-template-columns:repeat(3,1fr)}
+.tl:before{content:"";position:absolute;left:6px;right:0;top:6px;height:1px;background:var(--gold)}
+.tl>div{position:relative;padding:30px 24px 0 0}
+.tl>div:before{content:"";position:absolute;left:0;top:0;width:13px;height:13px;border-radius:50%;background:var(--black);border:2px solid var(--gold);box-sizing:border-box}
+.stage .tl>div:before{background:var(--gold)}
+.tl .k{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--dg);display:block;margin-bottom:4px}
+.stage .tl .k{color:var(--mg)}
+.tl h3{font-size:clamp(22px,1.9vw,28px);margin-bottom:10px}
+.tl p{font-size:15.5px;line-height:1.5;color:var(--dg)}
+.stage .tl p{color:var(--mg)}
+@media(max-width:900px){.tl,.tl.t3{grid-template-columns:1fr 1fr;row-gap:28px}}
+/* concepts */
+.cx{display:grid;grid-template-columns:.92fr 1.08fr;gap:26px;align-items:start}
+@media(max-width:1000px){.cx{grid-template-columns:1fr}}
+.cx-l button{all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:grid;grid-template-columns:44px 1fr;padding:17px 20px;margin-bottom:10px;border-radius:8px;background:rgba(255,255,255,.55);transition:background .2s}
+.cx-l button:hover{background:#fff}
+.cx-l .no{color:var(--gold);font-weight:600;font-size:14px;padding-top:3px}
+.cx-l b{display:block;font-size:18px;font-weight:600}
+.cx-l .s{font-size:14px;color:var(--dg)}
+.cx-l button.on{background:var(--black);color:var(--white)}
+.cx-l button.on .s{color:var(--mg)}
+.cx-p{background:var(--black);color:var(--white);border-radius:10px;padding:26px 26px 24px}
+.cx-p .lab{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--mg);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{border:1px solid #4a4a4a;border-radius:999px;padding:6px 14px;font-size:13.5px;color:#ddd}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#000}
+.chip.f{border-radius:4px;border-color:var(--gold);color:var(--gold);text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:600;padding:7px 12px}
+.cx-p .what{font-size:19px;line-height:1.45;margin-bottom:20px}
+.ex{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:center}
+@media(max-width:640px){.ex{grid-template-columns:1fr}}
+.ex figure{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:6px}
+.ex img{width:100%;height:100%;object-fit:cover}
+.ex p{font-size:14px;color:var(--mg);line-height:1.45}
+.ex p b{display:block;color:#fff;font-weight:600;margin-bottom:4px}
+.btn{display:inline-block;margin-top:12px;color:var(--gold);font-weight:600;font-size:14px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px}
+/* experts lineup */
+.lineup{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:6px}
+@media(max-width:900px){.lineup{grid-template-columns:repeat(2,1fr)}}
+.xp{text-align:center}
+.xp .ph{width:min(190px,100%);aspect-ratio:1;margin:0 auto 18px;border-radius:50%;overflow:hidden;border:3px solid var(--black);box-shadow:0 0 0 6px var(--cream),0 0 0 7px var(--black);background:var(--black)}
+.xp .ph img{width:100%;height:100%;object-fit:cover}
+.xp .ph.plus{display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--disp);font-size:70px}
+.xp h4{font-family:var(--disp);font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:26px;line-height:1}
+.xp .r{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--dg);margin:6px 0 10px}
+.xp p{font-size:14.5px;line-height:1.5;color:var(--dg);max-width:240px;margin:0 auto}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:16px}
+.tbl th{text-align:left;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--dg);padding:0 10px 12px;border-bottom:1px solid var(--black)}
+.tbl td{padding:13px 10px;border-bottom:1px solid rgba(64,71,82,.18)}
+.tbl td:first-child{font-size:14px;color:var(--dg);width:38%}
+.tbl td:last-child{font-weight:600}
+/* pick */
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:800px){.pick{grid-template-columns:1fr}}
+.pk{background:#111;border:1px solid #2b2b2b;border-radius:10px;padding:24px 26px}
+.pk .ey{font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--gold)}
+.pk .pr{font-family:var(--disp);font-size:clamp(46px,4.4vw,64px);line-height:1;margin:10px 0 10px}
+.pk p{font-size:14.5px;color:var(--mg);line-height:1.5}
+.pk .ch{display:inline-block;margin-top:16px;background:var(--gold);color:#000;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.contact{margin-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--mg)}
+.contact b{color:#fff;font-weight:600}
+.contact .lbl{text-transform:uppercase;letter-spacing:.1em;font-size:11px;margin-right:8px}
+.pkgs .cd .pr{font-family:var(--disp);font-size:clamp(50px,5vw,74px);color:var(--gold);line-height:1;margin:6px 0 4px}
+.pkgs .cd .pr small{font-size:.4em;color:#fff;margin-left:6px;letter-spacing:.04em}
+.pkgs .cd.rec{outline:2px solid var(--gold);outline-offset:-2px}
+blockquote.q{border-left:2px solid var(--gold);padding-left:20px;font-size:clamp(18px,1.5vw,22px);line-height:1.45;max-width:760px;margin-top:30px}
+blockquote.q cite{display:block;font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mg);margin-top:10px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="badge" id="badge"><span class="hy">HYVL</span><span class="x">&times;</span><img class="lb" src="logo-horizontal-black.png" alt="The Desire Company"><img class="lw" src="logo-horizontal-white.png" alt=""></div>
+<nav class="rail" id="rail"><svg class="ic" viewBox="0 0 153 191"><path fill="#A48450" d="M57.5 0A95.5 95.5 0 0 1 57.5 191V152.5A57 57 0 0 0 57.5 38.5Z"/><path fill="#A48450" d="M57.5 38.5A57 57 0 0 0 57.5 152.5V114.5A19 19 0 0 1 57.5 76.5Z"/></svg></nav>
+<div class="ctrl"><span class="ch" id="chl"></span><span class="ct" id="ct"></span>
+ <button id="up" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
+ <button id="dn" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>
+
+<main id="story">
+
+<!-- 00 OPEN -->
+<section class="beat stage open" data-ch="0" id="open">
+ <svg class="arcs" viewBox="0 0 400 700"><circle cx="400" cy="350" r="250" fill="none" stroke="#A48450" stroke-width="1.2"/><circle cx="400" cy="350" r="120" fill="none" stroke="#A48450" stroke-width="1.2"/><path d="M150 40 V660" stroke="#A48450" stroke-width="1" opacity=".5"/></svg>
+ <div class="wrap">
+  <div class="cob"><span class="hy">HYVL</span><span class="x">&times;</span><img src="logo-horizontal-white.png" alt="The Desire Company"></div>
+  <h1>Turning engineering into <em>shopper confidence</em></h1>
+  <hr class="rl">
+  <p class="sub">The HYVL expert content pilot and a scalable content-for-commerce engine for every Westlake brand. Prepared for Westlake Brands by The Desire Company.</p>
+  <p class="meta">Proposal · November 2026</p>
+  <p class="hint">Scroll, swipe or use the arrow keys</p>
+  <div class="strip">
+   <figure><img src="c21.jpg" alt="HYVL 21 inch carry-on"></figure>
+   <figure class="play"><img src="ex-samsonite.jpg" alt="Example expert luggage review"><span class="tag">Example</span></figure>
+   <figure><img src="m25.jpg" alt="HYVL 25 inch checked medium"></figure>
+   <figure class="play"><img src="ex-stasher.jpg" alt="Example three sizes in one video"><span class="tag">Example</span></figure>
+   <figure><img src="l29.jpg" alt="HYVL 29 inch checked large"></figure>
+   <figure><img src="set.jpg" alt="HYVL three-piece set"></figure>
+  </div>
+ </div>
+</section>
+
+<!-- 01 WHO -->
+<section class="beat" data-ch="1" id="who">
+ <div class="wrap">
+  <span class="eyebrow">Who we are</span>
+  <h2>The Desire Company</h2><hr class="rl">
+  <p class="lede">We help brands improve product education, shopper confidence, PDP conversion and AI-powered shopping visibility, through expert-led commerce content built for how people actually shop. For HYVL, the opportunity is to turn an engineering story that lives in text into proof shoppers and AI assistants can see.</p>
+  <div class="cards c4">
+   <article class="cd"><h3>Expert storytelling</h3><div class="cr"></div><p>Credible product education from credentialed experts, not influencer promotion.</p></article>
+   <article class="cd"><h3>Consumer intelligence</h3><div class="cr"></div><p>Voice of Consumer and AI Presence research that surfaces real shopper questions.</p></article>
+   <article class="cd"><h3>PDP and AI readiness</h3><div class="cr"></div><p>Audits that identify content gaps for humans and AI alike.</p></article>
+   <article class="cd"><h3>Neuroscience-backed</h3><div class="cr"></div><p>Content formulas built on where shoppers' attention goes and what earns trust.</p></article>
+  </div>
+ </div>
+</section>
+
+<!-- 02 HEARD -->
+<section class="beat" data-ch="2" id="heard">
+ <div class="wrap">
+  <span class="eyebrow">What we heard</span>
+  <h2 class="wide">Westlake's four priorities</h2><hr class="rl">
+  <p class="lede">A direct reflection of Westlake's priorities from our conversation with Vinay.</p>
+  <div class="cards c4">
+   <article class="cd"><h3>Win the final 30%</h3><div class="cr"></div><p>Product pages that show HYVL is engineered, not marketed: the differentiation AI tools can't create on their own.</p></article>
+   <article class="cd"><h3>Break creative fatigue</h3><div class="cr"></div><p>An outside partner to challenge the status quo and lift low social engagement.</p></article>
+   <article class="cd"><h3>Move faster</h3><div class="cr"></div><p>An established ecosystem that works alongside your Shopify stack, with a hybrid model for formats your team already owns.</p></article>
+   <article class="cd"><h3>Pilot, then scale</h3><div class="cr"></div><p>Prove it on one brand before a larger commitment, then replicate across your women's and Gen Z brands.</p></article>
+  </div>
+ </div>
+</section>
+
+<!-- 03 HYVL -->
+<section class="beat stage" data-ch="3" id="hyvl">
+ <svg class="arcs" viewBox="0 0 400 700"><circle cx="250" cy="350" r="230" fill="none" stroke="#A48450" stroke-width="1" opacity=".55"/></svg>
+ <div class="wrap split">
+  <div>
+   <span class="eyebrow">Strategic direction</span>
+   <h2>Reinforce what HYVL already stands for.</h2><hr class="rl">
+   <p class="lede">HYVL is built on real-world travel, independent lab testing, a Covestro Makrolon polycarbonate shell, YKK zippers and a lifetime warranty. The content reinforces that promise: engineering you can see, durability you can trust, and clear size and model education. No new narrative, and no lifestyle hype.</p>
+   <blockquote class="q">"Engineers rather than marketers."<cite>HYVL 21" Carry-On review</cite></blockquote>
+  </div>
+  <div class="photos">
+   <figure><img src="set.jpg" alt="HYVL 21, 25 and 29 inch suitcases"></figure>
+   <figure><img src="m25.jpg" alt="HYVL 25 inch in navy"></figure>
+   <p class="cap">HYVL hardshell collection · 21", 25" and 29"</p>
+  </div>
+ </div>
+</section>
+
+<!-- 04 BRAND INTELLIGENCE -->
+<section class="beat stage" data-ch="4" id="intel">
+ <div class="wrap">
+  <span class="eyebrow">Brand intelligence</span>
+  <h2>A five-star product with an invisible story</h2><hr class="rl">
+  <div class="stats">
+   <div class="st"><div class="n">18/18</div><b>Five-star reviews</b><p>Every review across the 21", 25" and 29" is five stars.</p></div>
+   <div class="st"><div class="n">0 of 3</div><b>Audited PDPs with video</b><p>No video on any pilot product page.</p></div>
+   <div class="st"><div class="n">66–72</div><b>PDP audit scores</b><p>Out of 100. 80+ is good, 90+ is best in class.</p></div>
+   <div class="st"><div class="n g">0/100</div><b>AI Presence</b><p>HYVL isn't named when shoppers ask AI for luggage.</p></div>
+  </div>
+  <div class="callouts">
+   <p><b>The content gap.</b> The engineering proof is on the page in text, but there's no demonstration, no comparison guidance and very little social proof in a category where shoppers want to feel the quality before they buy.</p>
+   <p><b>The implication.</b> HYVL doesn't need a new brand story. It needs an independent expert to show the story, on the product page and in a form AI can read.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 04b AI PRESENCE -->
+<section class="beat" data-ch="4" id="ai">
+ <div class="wrap">
+  <span class="eyebrow">AI Presence</span>
+  <h2 class="wide">AI shoppers can't find HYVL. When they do, the facts are wrong.</h2><hr class="rl">
+  <div class="cards c2">
+   <article class="cd"><span class="ey">Who AI recommends instead</span><h3>The usual names win</h3><div class="cr"></div><ul><li>Carry-on: Away, Rimowa, Samsonite, Monos</li><li>25" medium: Rimowa, Monos, Briggs &amp; Riley, Travelpro</li><li>29" large: Travelpro, Away, Rimowa, Samsonite</li><li>AI leans on Forbes, OutdoorGearLab and YouTube to decide</li></ul></article>
+   <article class="cd"><span class="ey">What AI gets wrong</span><h3>Six wrong facts</h3><div class="cr"></div><ul><li>25" weight: says 18 lb (actual 10.8 lb)</li><li>25" trip length: says 1 to 2 weeks (actual 3 to 7 days)</li><li>25" size: says 26 x 17 x 12 in (actual 25 x 16 x 10 in)</li><li>21" wheels: says 60 mm (actual 50 mm)</li><li>29" price: says $300+ (actual $279)</li></ul></article>
+  </div>
+  <p class="note">Tested on Claude and Google Gemini with real shopper questions, November 2026. AI answers vary between runs.</p>
+ </div>
+</section>
+
+<!-- 05 VOICE -->
+<section class="beat" data-ch="5" id="voice">
+ <div class="wrap">
+  <span class="eyebrow">Consumer voice</span>
+  <h2>What shoppers are telling us</h2><hr class="rl">
+  <div class="cards c2">
+   <article class="cd"><span class="ey">Positive signals</span><h3>What buyers value</h3><div class="cr"></div><ul><li>Smooth, quiet, stable wheels: the #1 cited differentiator</li><li>Build quality compared to Tumi and Briggs &amp; Riley, at a lower price</li><li>Leather handles and a finish that doesn't look like "typical plastic" luggage</li><li>Transparency on materials, testing and warranty</li></ul></article>
+   <article class="cd"><span class="ey">Areas of friction</span><h3>Recurring shopper questions</h3><div class="cr"></div><ul><li>"It's a new brand." No outside reviews, YouTube or Reddit discussion yet</li><li>Exact weight, dimensions and airline limits</li><li>What the lifetime warranty covers, including airline damage</li><li>How HYVL compares to Away, Monos and July</li></ul></article>
+  </div>
+  <p class="note">Qualitative findings from The Desire Company Consumer Voice reports, based on 18 on-site reviews and search data. Not statistically representative of all HYVL shoppers.</p>
+ </div>
+</section>
+
+<!-- 05b BY PRODUCT -->
+<section class="beat" data-ch="5" id="byproduct">
+ <div class="wrap">
+  <span class="eyebrow">By product</span>
+  <h2 class="wide">Shoppers ask about size. They praise the build.</h2><hr class="rl">
+  <div class="cards c3 bp">
+   <article class="cd"><img src="c21.jpg" alt="HYVL 21 inch carry-on"><div><span class="ey">21" Carry-On · 9 reviews</span><h3>Built for tight connections</h3><div class="cr"></div><p>Praised for wheels, interior and leather handles. Shoppers ask for exact dimensions, airline limits and weight.</p></div></article>
+   <article class="cd"><img src="m25.jpg" alt="HYVL 25 inch checked medium"><div><span class="ey">25" Checked Medium · 7 reviews</span><h3>The wheels win it</h3><div class="cr"></div><p>"The most stable wheels I've used in 20 years." Shoppers ask about weight, capacity and how it compares.</p></div></article>
+   <article class="cd"><img src="l29.jpg" alt="HYVL 29 inch checked large"><div><span class="ey">29" Checked Large · 2 reviews</span><h3>Proof closes the sale</h3><div class="cr"></div><p>Buyers chose it for the published test reports. Others ask what was tested and what the warranty covers.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<!-- 06 AUDIT -->
+<section class="beat" data-ch="6" id="audit">
+ <div class="wrap">
+  <span class="eyebrow">PDP audit snapshot</span>
+  <h2 class="wide">Three HYVL PDPs, two lenses</h2><hr class="rl">
+  <p class="lede">Three HYVL product pages, each scored for Human Conversion Readiness and Agentic Commerce Readiness: the 21" Carry-On, 25" Checked Medium and 29" Checked Large. Pick a measure to re-rank the pages.</p>
+  <div class="audit">
+   <div>
+    <div class="pills" id="pills"><button data-k="o" class="on">Overall</button><button data-k="h">Human readiness</button><button data-k="a">Agentic readiness</button><button data-k="p">With expert content</button></div>
+    <div class="bars" id="bars"></div>
+   </div>
+   <aside class="side">
+    <span class="ey">What the scores show</span>
+    <p>Human readiness sits at 66 to 73. Agentic readiness runs 65 to 71, and the 25" Checked Medium scores lowest on both. Our audit engine projects all three pages reach 88 with expert-led content.</p>
+    <dl><dt>Overall</dt><dd>The page's overall content and readiness score, out of 100.</dd><dt>Human readiness</dt><dd>Trust, clarity and content quality as a shopper experiences it.</dd><dt>Agentic readiness</dt><dd>How well AI shopping assistants can read, trust and recommend the page.</dd></dl>
+   </aside>
+  </div>
+ </div>
+</section>
+
+<!-- 06b FOUND -->
+<section class="beat" data-ch="6" id="found">
+ <div class="wrap">
+  <span class="eyebrow">What the audit found</span>
+  <h2 class="wide">Strong product data, missing demonstration</h2><hr class="rl">
+  <div class="cards c3">
+   <article class="cd"><span class="ey">Working well</span><h3>Rich data</h3><div class="cr"></div><ul><li>Structured product, pricing and review data</li><li>Detailed specs, materials and testing standards</li><li>Lifetime warranty and free shipping visible</li></ul></article>
+   <article class="cd"><span class="ey">Common gap</span><h3>No video</h3><div class="cr"></div><ul><li>Zero video on all three pages</li><li>Multimodal grounding scores 6 of 15 on each</li><li>Nothing for AI to cite beyond text</li></ul></article>
+   <article class="cd"><span class="ey">Common gap</span><h3>No guidance</h3><div class="cr"></div><ul><li>No comparison against competitors</li><li>Use-case and size guidance not machine-readable</li><li>Low review counts limit social proof</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<!-- 06c OPPS -->
+<section class="beat" data-ch="6" id="opps">
+ <div class="wrap">
+  <span class="eyebrow">The biggest opportunities</span>
+  <h2 class="wide">Where each page gains the most</h2><hr class="rl">
+  <div class="tl t3">
+   <div><span class="k">1 · +22 projected</span><h3>25" Checked Medium</h3><p>Lowest scores, and AI gets its weight, size and trip length wrong. "Add to Bag" was unavailable for the default variant when we audited it, a quick fix worth checking.</p></div>
+   <div><span class="k">2 · +16 projected</span><h3>21" Carry-On</h3><p>Shoppers want airline compliance and weight answered. AI doesn't surface HYVL for "tight connections" or "first premium carry-on" questions.</p></div>
+   <div><span class="k">3 · +16 projected</span><h3>29" Checked Large</h3><p>Only 2 reviews. Its buyers chose HYVL because of the testing reports. Show the testing and warranty to everyone else.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 07 CONCEPTS -->
+<section class="beat" data-ch="7" id="concepts">
+ <div class="wrap">
+  <span class="eyebrow">Content ideation</span>
+  <h2 class="wide">Four expert concepts for the pilot</h2><hr class="rl">
+  <p class="lede">Led by credible travel and design experts, not lifestyle influencers. Pick a concept to see what the expert does and an example of the kind of work behind it.</p>
+  <div class="cx"><div class="cx-l" id="cxl"></div><div class="cx-p" id="cxp"></div></div>
+  <p class="note">Videos shown are examples of The Desire Company's expert work for other brands. Every concept is built at the parent model level, so one video covers every color.</p>
+ </div>
+</section>
+
+<!-- 08 EXPERTS -->
+<section class="beat" data-ch="8" id="experts">
+ <div class="wrap">
+  <span class="eyebrow">Expert strategy</span>
+  <h2 class="wide">Travelers, engineers and designers</h2><hr class="rl">
+  <div class="cards c2">
+   <article class="cd"><span class="ey">Preferred profiles</span><h3>Who we cast</h3><div class="cr"></div><ul><li>Engineers and industrial designers who can explain build quality</li><li>Pilots and flight attendants who live out of a suitcase</li><li>Adventure and travel hosts with real gear credibility</li><li>Frequent business travelers, HYVL's core buyer</li></ul></article>
+   <article class="cd"><span class="ey">Selection criteria</span><h3>How we choose</h3><div class="cr"></div><ul><li>Matched to HYVL through our ExpertIQ formula</li><li>Strong on-camera communication</li><li>Alignment with HYVL's target traveler</li><li>A relatable, inclusive perspective across the Westlake portfolio</li></ul></article>
+  </div>
+  <p class="note">The final expert shortlist will be developed using customer and audience information provided by Westlake.</p>
+ </div>
+</section>
+
+<!-- 08b PROFILES -->
+<section class="beat" data-ch="8" id="profiles">
+ <div class="wrap">
+  <span class="eyebrow">Expert profiles we'd explore</span>
+  <h2 class="wide">Travel experts we'd start with</h2><hr class="rl">
+  <div class="lineup">
+   <div class="xp"><div class="ph"><img src="xp-ireland.jpg" alt="Robert Ireland"></div><h4>Robert Ireland</h4><div class="r">Adventure travel TV host</div><p>25+ years exploring remote places and sharing gear advice. A natural voice for HYVL's real-world testing story.</p></div>
+   <div class="xp"><div class="ph"><img src="xp-light.jpg" alt="Samantha Light"></div><h4>Samantha Light</h4><div class="r">Travel photographer and host</div><p>Media producer and on-air host. Ideal for close-up first impressions of the shell, zippers and leather details.</p></div>
+   <div class="xp"><div class="ph"><img src="xp-smith.jpg" alt="Cierra Smith"></div><h4>Cierra Smith</h4><div class="r">Former pro mountain biker</div><p>A decade of competitive travel. Speaks to whether the shell holds up to hard, frequent use.</p></div>
+   <div class="xp"><div class="ph plus">+</div><h4>Engineer or designer</h4><div class="r">Sourcing for HYVL</div><p>An engineer or industrial designer to explain the testing and materials, matched to your target traveler.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 08c WHY -->
+<section class="beat stage" data-ch="8" id="why">
+ <div class="wrap">
+  <span class="eyebrow">Why experts · Backed by neuroscience</span>
+  <h2>Built on how shoppers actually respond to video</h2><hr class="rl">
+  <div class="stats">
+   <div class="st"><div class="n">3-4x</div><b>More purchase confidence</b><p>Shoppers who watched expert video were 3 to 4x more likely to say they were "extremely confident" to buy than those who watched manufacturer video.</p></div>
+   <div class="st"><div class="n">69%</div><b>Trust real usage</b><p>Said seeing the product used in real life had the greatest influence on trust.</p></div>
+   <div class="st"><div class="n">2-3</div><b>Videos to decide</b><p>Most shoppers watch 2 to 3 videos before buying.</p></div>
+   <div class="st"><div class="n g">300%</div><b>Purchase confidence</b><p>Increase vs. traditional brand advertising.</p></div>
+  </div>
+  <p class="note">Source: The Desire Company neurostudies (biometric and survey research across multiple retail categories). This is how we answer creative fatigue: decisions settled by data, not opinions in the room.</p>
+ </div>
+</section>
+
+<!-- 09 CHANNELS -->
+<section class="beat" data-ch="9" id="channels">
+ <div class="wrap">
+  <span class="eyebrow">Channel and asset strategy</span>
+  <h2 class="wide">PDP first, with AI-ready metadata</h2><hr class="rl">
+  <div class="cards c3">
+   <article class="cd"><span class="ey">Primary destination</span><h3>PDP first</h3><div class="cr"></div><ul><li>hyvltravel.com product pages for the three pilot models</li><li>Carries over to the International and Complete Travel Sets</li><li>Amazon listings, subject to Amazon content requirements</li></ul></article>
+   <article class="cd"><span class="ey">Optional secondary assets</span><h3>Same production day</h3><div class="cr"></div><ul><li>DTC social with call-to-action</li><li>Connected TV and paid media cuts</li><li>Short-form product education</li></ul></article>
+   <article class="cd"><span class="ey">AI discoverability</span><h3>Built for agentic environments</h3><div class="cr"></div><ul><li>Video schema markup on Shopify</li><li>Accurate transcripts with the correct specs</li><li>FAQ and use-case language AI can cite</li></ul></article>
+  </div>
+  <p class="note">Structured, expert-led content drove a 29-point lift in Agentic Commerce Readiness for another brand. The Desire Company does not guarantee visibility or ranking within ChatGPT, Claude, Gemini or retailer AI tools.</p>
+ </div>
+</section>
+
+<!-- 10 INVESTMENT: ROADMAP -->
+<section class="beat stage" data-ch="10" id="roadmap">
+ <svg class="arcs" viewBox="0 0 400 700"><circle cx="400" cy="350" r="250" fill="none" stroke="#A48450" stroke-width="1" opacity=".5"/></svg>
+ <div class="wrap">
+  <span class="eyebrow">Scope and investment</span>
+  <h2>Prove it on HYVL. Then scale it across Westlake.</h2><hr class="rl">
+  <p class="lede">A focused pilot on one Westlake brand, replicated for the next, then scaled into Westlake's dedicated content-for-commerce engine.</p>
+  <div class="tl t3">
+   <div><span class="k">Phase 1</span><h3>Pilot on HYVL</h3><p>One brand, three parent models. Baseline from the audits in this proposal, measured at 30, 60 and 90 days.</p></div>
+   <div><span class="k">Phase 2</span><h3>Replicate</h3><p>Roll the playbook into your women's and Gen Z brands, built for launch instead of catch-up.</p></div>
+   <div><span class="k">Phase 3</span><h3>Scale the engine</h3><p>One partner for insights, experts, production, AI optimization and measurement across every Westlake brand.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 10b PACKAGES -->
+<section class="beat" data-ch="10" id="investment">
+ <div class="wrap">
+  <span class="eyebrow">What each package does</span>
+  <h2 class="wide">Two ways to start the pilot</h2><hr class="rl">
+  <div class="cards c2 pkgs">
+   <article class="cd"><span class="ey">Package one</span><h3>The focused pilot</h3><div class="pr">$30K</div><div class="cr"></div><ul><li>1 expert across up to 3 HYVL parent models</li><li>PDP audit, Voice of Consumer and AI Presence insights</li><li>Expert shortlist and creative kickoff</li><li>In-house production and asset package</li><li>Agentic schema, transcripts and tracking</li><li>30, 60 and 90-day reporting</li></ul></article>
+   <article class="cd rec"><span class="ey">Package two · Recommended</span><h3>The two-expert pilot</h3><div class="pr">$45K</div><div class="cr"></div><ul><li>2 experts across up to 3 HYVL parent models</li><li>Plus a how-to explainer: the 21", 25" and 29" side by side, and which size fits which trip</li><li>Two perspectives, for example an engineer and a frequent traveler</li><li>More creative to test, which tackles creative fatigue</li><li>Everything in Package one</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<!-- 10c COMPARE -->
+<section class="beat" data-ch="10" id="compare">
+ <div class="wrap">
+  <span class="eyebrow">Package comparison</span>
+  <h2>Side by side</h2><hr class="rl">
+  <table class="tbl">
+   <tr><th>Feature</th><th>Package one</th><th>Package two</th></tr>
+   <tr><td>Investment</td><td>$30,000</td><td>$45,000</td></tr>
+   <tr><td>Experts</td><td>1</td><td>2</td></tr>
+   <tr><td>Parent model scope</td><td>Up to 3</td><td>Up to 3</td></tr>
+   <tr><td>How-to size explainer</td><td>Not included</td><td>Included</td></tr>
+   <tr><td>Insights (PDP audit, Voice of Consumer, AI Presence)</td><td>Included</td><td>Included</td></tr>
+   <tr><td>Asset package (PDP, brand page, CTV, social)</td><td>Included</td><td>Included</td></tr>
+   <tr><td>Agentic schema and transcripts</td><td>Included</td><td>Included</td></tr>
+   <tr><td>Tracking and 30/60/90-day reporting</td><td>Included</td><td>Included</td></tr>
+   <tr><td>Objective</td><td>Validate the approach</td><td>Validate and build the playbook to scale</td></tr>
+  </table>
+  <p class="note">Both are a focused pilot on HYVL. Additional shoot days, models and Westlake brands are available at volume pricing once the pilot proves out.</p>
+ </div>
+</section>
+
+<!-- 11 MEASURE -->
+<section class="beat" data-ch="11" id="measure">
+ <div class="wrap">
+  <span class="eyebrow">Measurement and success</span>
+  <h2 class="wide">Measured on Westlake's own data</h2><hr class="rl">
+  <div class="cards c2">
+   <article class="cd"><span class="ey">Pilot measurement</span><h3>Did it work?</h3><div class="cr"></div><ul><li>Baseline from the audits in this proposal</li><li>One line of code tracks click-throughs and watch time</li><li>Conversion compared on Westlake's Shopify data</li><li>Evaluated at 30, 60 and 90 days</li><li>PDP and AI Presence audits re-run after launch</li></ul></article>
+   <article class="cd"><span class="ey">Scalability measurement</span><h3>Can it scale?</h3><div class="cr"></div><ul><li>Production efficiency per model and per brand</li><li>Content use across PDP, Amazon, social and CTV</li><li>New shopper questions to answer next</li><li>Readiness to replicate for the next Westlake brand</li></ul></article>
+  </div>
+  <p class="note">Westlake's internal reporting is required to evaluate conversion. A specific conversion lift and guaranteed AI discovery are not promised.</p>
+ </div>
+</section>
+
+<!-- 12 NEXT -->
+<section class="beat" data-ch="12" id="next">
+ <div class="wrap">
+  <span class="eyebrow">Next steps</span>
+  <h2 class="wide">Align, produce, evaluate, scale</h2><hr class="rl">
+  <div class="cards c2">
+   <article class="cd"><span class="ey">Westlake</span><h3>Brief and approvals</h3><div class="cr"></div><ul><li>Choose Package one or Package two</li><li>Confirm the three pilot models</li><li>Share target customer and messaging guidance</li><li>Confirm channels: hyvltravel.com, Amazon, social</li><li>Confirm budget approval and contracting timeline</li></ul></article>
+   <article class="cd"><span class="ey">The Desire Company</span><h3>Casting and framework</h3><div class="cr"></div><ul><li>Walk through the full audit reports</li><li>Develop the travel expert shortlist</li><li>Finalize the pilot creative concepts</li><li>Align on the 90-day measurement approach</li><li>Outline the rollout plan for your other brands</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<!-- 12b TIMELINE -->
+<section class="beat" data-ch="12" id="timeline">
+ <div class="wrap">
+  <span class="eyebrow">Timeline</span>
+  <h2 class="wide">From follow-up to launch</h2><hr class="rl">
+  <div class="tl">
+   <div><span class="k">Next week</span><h3>Follow-up meeting</h3><p>Review this proposal and the audits together.</p></div>
+   <div><span class="k">On approval</span><h3>Contract and kickoff</h3><p>Expert shortlist, intake and creative brief.</p></div>
+   <div><span class="k">Production</span><h3>Shoot and optimize</h3><p>In-house production, editing, schema and transcripts.</p></div>
+   <div><span class="k">Launch</span><h3>Go live and measure</h3><p>Measure at 30, 60 and 90 days, then plan the next brand.</p></div>
+  </div>
+  <p class="note">Timing is set together and subject to package selection, approvals, contracting and production scheduling.</p>
+ </div>
+</section>
+
+<!-- 12c CLOSE -->
+<section class="beat stage" data-ch="12" id="close">
+ <svg class="arcs" viewBox="0 0 400 700"><circle cx="420" cy="350" r="300" fill="none" stroke="#A48450" stroke-width="1" opacity=".45"/><path d="M60 700 Q 200 500 140 300" fill="none" stroke="#A48450" stroke-width="1" opacity=".35"/></svg>
+ <div class="wrap">
+  <div class="cob"><span class="hy">HYVL</span><span class="x">&times;</span><img src="logo-horizontal-white.png" alt="The Desire Company"></div>
+  <span class="eyebrow">The Desire Company x Westlake Brands</span>
+  <h2>Start with HYVL. Prove the value. Build an engine that scales.</h2><hr class="rl">
+  <p class="lede">A strategic partnership built on product proof, shopper confidence and content that works for people and AI.</p>
+ </div>
+</section>
+
+<!-- 12d PICK -->
+<section class="beat stage" data-ch="12" id="pick">
+ <div class="wrap">
+  <span class="eyebrow">Next step</span>
+  <h2>Pick where we start.</h2><hr class="rl">
+  <div class="pick">
+   <div class="pk"><span class="ey">Package one · The focused pilot</span><div class="pr">$30,000</div><p>1 expert, up to 3 HYVL parent models, full insights, AI optimization and 30/60/90-day reporting.</p><span class="ch">Choose</span></div>
+   <div class="pk"><span class="ey">Package two · The two-expert pilot</span><div class="pr">$45,000</div><p>2 experts, up to 3 parent models, plus the how-to size explainer and everything in Package one.</p><span class="ch">Choose</span></div>
+  </div>
+  <div class="contact"><span>Questions first? Let's talk at our follow-up.</span><span><span class="lbl">Your contact</span><b>Caroline Tolbert</b> · Brand Partnerships, The Desire Company</span></div>
+ </div>
+</section>
+
+</main>
+
+<script>
+/* concepts */
+const C=[
+ {t:"Built to Be Tested",s:"An expert product review",q:["Durability","Materials","Trust","Which size"],on:[0,1,2],
+  w:"An engineer or seasoned traveler puts the proof on camera: the Covestro Makrolon shell, independent lab testing, the wheels and YKK zippers, and what they mean after thousands of miles.",
+  f:["Demonstration","PDP first"],img:"ex-samsonite.jpg",ex:"Example: Will Jardell and James Wallington for Samsonite",d:"Two experts review a hardside suitcase in real-world travel.",link:"https://icnk.io/u/3OhGxY-hSRff/"},
+ {t:"Which Size for Which Trip?",s:"How-to size explainer · Package two",q:["Durability","Materials","Trust","Which size"],on:[3],
+  w:"One expert walks through the 21\", 25\" and 29\" side by side: dimensions, weight, airline limits and how many days each one packs for. It also corrects the size facts AI gets wrong today.",
+  f:["How-to","PDP first","AI-ready"],img:"ex-stasher.jpg",ex:"Example: Daniella Malfitano for Stasher",d:"Three product sizes compared in one video."},
+ {t:"One Collection, Every Option",s:"Colors, sizes and sets",q:["Durability","Materials","Trust","Which size"],on:[1,3],
+  w:"Built at the parent model level, one video shows the five colorways and how the 21\", 25\" and 29\" combine into the International and Complete Travel Sets, so one asset serves every variant page.",
+  f:["Demonstration","PDP first","Brand page"],img:"ex-toscana.jpg",ex:"Example: Paul Zahn for Toscana",d:"Every piece of a multi-piece set shown in one video."},
+ {t:"The Road-Warrior FAQ",s:"Short expert answers",q:["Durability","Materials","Trust","Which size"],on:[0,2,3],
+  w:"Short cuts answering the exact questions shoppers ask: what the lifetime warranty covers, empty weight, carry-on compliance, what the lab tests measured, and how HYVL compares to the big names.",
+  f:["FAQ","PDP first","Social"],img:"ex-samsonite-2.jpg",ex:"Example: Will Jardell and James Wallington for Samsonite",d:"Expert-led luggage content in real travel settings.",link:"https://icnk.io/u/3OhGxY-hSRff/"}
+];
+const L=document.getElementById('cxl'),P=document.getElementById('cxp');
+function show(i){[...L.children].forEach((b,j)=>b.classList.toggle('on',i===j));const c=C[i];
+ P.innerHTML=`<p class="lab">Shopper question it answers</p><div class="chips">${c.q.map((x,j)=>`<span class="chip ${c.on.includes(j)?'on':''}">${x}</span>`).join('')}</div><p class="lab">What the expert does</p><p class="what">${c.w}</p><p class="lab">Format</p><div class="chips">${c.f.map(x=>`<span class="chip f">${x}</span>`).join('')}</div><div class="ex"><figure class="play"><img src="${c.img}" alt="${c.ex}"></figure><p><b>${c.ex}</b>${c.d}${c.link?`<br><a class="btn" href="${c.link}" target="_blank" rel="noopener">Watch the example →</a>`:''}</p></div>`;}
+C.forEach((c,i)=>{const b=document.createElement('button');b.innerHTML=`<span class="no">0${i+1}</span><span><b>${c.t}</b><span class="s">${c.s}</span></span>`;b.onclick=()=>show(i);L.appendChild(b)});show(0);
+/* audit bars */
+const A=[{n:'21" Carry-On',o:72,h:72,a:71,p:88},{n:'25" Checked Medium',o:66,h:66,a:65,p:88},{n:'29" Checked Large',o:72,h:73,a:70,p:88}];
+const B=document.getElementById('bars');
+function bars(k){const s=[...A].sort((x,y)=>y[k]-x[k]);B.className='bars'+(k==='p'?' proj':'');B.innerHTML=s.map(r=>`<div class="row"><span class="nm">${r.n}</span><span class="tr"><span class="fl" style="width:0"></span></span><span class="v">${r[k]}</span></div>`).join('');requestAnimationFrame(()=>[...B.querySelectorAll('.fl')].forEach((f,i)=>f.style.width=s[i][k]+'%'));}
+document.querySelectorAll('#pills button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pills button').forEach(x=>x.classList.toggle('on',x===b));bars(b.dataset.k)});bars('o');
+/* chrome */
+const CH=["Open","Who We Are","What We Heard","HYVL","Brand Intelligence","Consumer Voice","PDP Audit","Content Concepts","Expert Strategy","Channels and Assets","Investment","Measurement","Next Steps"];
+const S=[...document.querySelectorAll('section.beat')],R=document.getElementById('rail'),PG=document.getElementById('prog');
+CH.forEach((n,i)=>{const first=S.find(s=>+s.dataset.ch===i);const a=document.createElement('a');a.href='#'+first.id;a.innerHTML=`<span class="nm">${n}</span><span>${String(i).padStart(2,'0')}</span><span class="ln"></span>`;R.appendChild(a);const sg=document.createElement('span');sg.className='seg';PG.appendChild(sg)});
+let cur=0;
+function setActive(i){cur=i;const s=S[i],ch=+s.dataset.ch;[...R.querySelectorAll('a')].forEach((a,j)=>a.classList.toggle('on',j===ch));[...PG.children].forEach((g,j)=>g.classList.toggle('done',j<=ch));
+ document.getElementById('chl').innerHTML=`<b>${String(ch).padStart(2,'0')}</b>${CH[ch]}`;document.getElementById('ct').textContent=`${i+1} / ${S.length}`;
+ document.body.classList.toggle('dark',s.classList.contains('stage'));document.getElementById('badge').classList.toggle('show',!['open','close'].includes(s.id));
+ document.getElementById('up').disabled=i===0;document.getElementById('dn').disabled=i===S.length-1;}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setActive(S.indexOf(e.target))})},{rootMargin:'-45% 0px -45% 0px'});S.forEach(s=>io.observe(s));
+const go=d=>{const t=S[Math.max(0,Math.min(S.length-1,cur+d))];t.scrollIntoView({behavior:'smooth'})};
+document.getElementById('up').onclick=()=>go(-1);document.getElementById('dn').onclick=()=>go(1);
+addEventListener('keydown',e=>{if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}else if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}});
+setActive(0);
+</script>
+</body>
+</html>
